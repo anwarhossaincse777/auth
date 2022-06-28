@@ -24,7 +24,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
             Route::group(['prefix'=>'admin','middleware' =>['admin','auth'],'namespace'=>'admin'], function(){
+
+
                 Route::get('dashboard', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.dashboard');
+                Route::post('add/product', [\App\Http\Controllers\Product\ProductContorlelr::class, 'addProduct'])->name('add.product');
+                Route::get('show/product', [\App\Http\Controllers\Product\ProductContorlelr::class, 'index'])->name('show.product');
+                Route::get('/product-edit/{product_id}',[\App\Http\Controllers\Product\ProductContorlelr::class,'edit']);
+                Route::post('product/data-update',[\App\Http\Controllers\Product\ProductContorlelr::class,'update'])->name('update-product-data');
+                Route::get('/product-delete/{product_id}',[\App\Http\Controllers\Product\ProductContorlelr::class,'delete']);
+                Route::get('product-inactive/{id}',[\App\Http\Controllers\Product\ProductContorlelr::class,'inactive']);
+                Route::get('product-active/{id}',[\App\Http\Controllers\Product\ProductContorlelr::class,'active']);
+
+
+
+
             });
 
 
