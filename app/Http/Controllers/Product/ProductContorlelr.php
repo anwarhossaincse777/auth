@@ -131,8 +131,7 @@ class ProductContorlelr extends Controller
             public function inactive($id)
             {
 
-
-             $product=Product::findOrFail($id)->update(['stock' =>0]);
+                Product::findOrFail($id)->update(['stock' =>0]);
 
                 Alert::alert('success', 'Successfully Out of Stock the Product ');
 
